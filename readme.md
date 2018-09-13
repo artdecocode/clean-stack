@@ -1,75 +1,73 @@
-# clean-stack [![Build Status](https://travis-ci.org/sindresorhus/clean-stack.svg?branch=master)](https://travis-ci.org/sindresorhus/clean-stack)
+# @artdeco/clean-stack
 
-> Clean up error stack traces
+[![npm version](https://badge.fury.io/js/%40artdeco%2Fclean-stack.svg)](https://npmjs.org/package/@artdeco/clean-stack)
 
-Removes the mostly unhelpful internal Node.js entries.
+`@artdeco/clean-stack` is a fork of clean-stack to remove internal Node.js lines from error stacks, as well as lines from specific modules.
 
-Also works in Electron.
-
-
-## Install
-
-```
-$ npm install --save clean-stack
+```sh
+yarn add -E @artdeco/clean-stack
 ```
 
+## Table Of Contents
 
-## Usage
-
-```js
-const cleanStack = require('clean-stack');
-const error = new Error('Missing unicorn');
-
-console.log(error.stack);
-/*
-Error: Missing unicorn
-    at Object.<anonymous> (/Users/sindresorhus/dev/clean-stack/unicorn.js:2:15)
-    at Module._compile (module.js:409:26)
-    at Object.Module._extensions..js (module.js:416:10)
-    at Module.load (module.js:343:32)
-    at Function.Module._load (module.js:300:12)
-    at Function.Module.runMain (module.js:441:10)
-    at startup (node.js:139:18)
-*/
-
-console.log(cleanStack(error.stack));
-/*
-Error: Missing unicorn
-    at Object.<anonymous> (/Users/sindresorhus/dev/clean-stack/unicorn.js:2:15)
-*/
-```
-
+- [Table Of Contents](#table-of-contents)
+- [API](#api)
+- [`cleanStack(stack: string, options?: Config)`](#cleanstackstack-stringoptions-config-void)
+  * [`Config`](#config)
+- [TODO](#todo)
+- [Copyright](#copyright)
 
 ## API
 
-### cleanStack(stack, [options])
+The package is available by importing its default function:
 
-#### stack
+```js
+import cleanStack from '@artdeco/clean-stack'
+```
 
-Type: `string`
+## `cleanStack(`<br/>&nbsp;&nbsp;`stack: string,`<br/>&nbsp;&nbsp;`options?: Config,`<br/>`): void`
 
-The `stack` property of an `Error`.
+__<a name="config">`Config`</a>__: Options for the program.
 
-#### options
+|     Name      |    Type    |                          Description                          |    Default    |
+| ------------- | ---------- | ------------------------------------------------------------- | ------------- |
+| pretty        | _boolean_  | Replace the absolute path to the home directory with the `~`. | `false`       |
+| ignoreModules | _string[]_ | Which modules to ignore in the path.                          | `['pirates']` |
 
-Type: `Object`
+Remove unuseful internal Node.js lines from the error stack. Any other modules to ignore can be passed in the `ignoreModules` option.
 
-##### pretty
+```js
+/* yarn example/ */
+import cleanStack from '@artdeco/clean-stack'
 
-Type: `boolean`<br>
-Default: `false`
+const err = `
+Error: test
+    at Object.<anonymous> (/Users/zavr/adc/clean-stack/i2.js:1:69)
+    at Module._compile (module.js:652:30)
+    at Module._compile (/Users/zavr/adc/clean-stack/node_modules/pirates/lib/index.js:83:24)
+    at Module._extensions..js (module.js:663:10)
+    at Object.newLoader [as .js] (/Users/zavr/adc/clean-stack/node_modules/pirates/lib/index.js:88:7)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+`.trim()
 
-Prettify the file paths in the stack:
+const res = cleanStack(err)
+```
 
-`/Users/sindresorhus/dev/clean-stack/unicorn.js:2:15` → `~/dev/clean-stack/unicorn.js:2:15`
+```
+Error: test
+    at Object.<anonymous> (/Users/zavr/adc/clean-stack/i2.js:1:69)
+```
 
+## TODO
 
-## Related
+- [ ] Add a new item to the todo list.
 
-- [extrack-stack](https://github.com/sindresorhus/extract-stack) - Extract the actual stack of an error
-- [stack-utils](https://github.com/tapjs/stack-utils) - Captures and cleans stack traces
+## Copyright
 
+(c) [Art Deco][1] 2018
 
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+[1]: https://artdeco.bz
