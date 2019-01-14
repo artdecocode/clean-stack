@@ -1,10 +1,10 @@
-
+<!--
 ## TODO
 
-- [ ] Add a new item to the todo list.
+- [ ] Add a new item to the todo list. -->
 
 ## Copyright
 
-(c) [Art Deco][1] 2018
+(c) [Art Deco][1] 2019
 
-[1]: https://artdeco.bz
+[1]: https://artd.eco

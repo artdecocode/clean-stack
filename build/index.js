@@ -57,5 +57,3 @@ module.exports=cleanStack
  * @prop {boolean} [pretty=false] Replace the absolute path to the home directory with the `~`. Default `false`.
  * @prop {string[]} [ignoreModules="['pirates']"] Which modules to ignore in the path. Default `['pirates']`.
  */
-
-//# sourceMappingURL=index.js.map
