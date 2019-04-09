@@ -1,7 +1,7 @@
 /* typal types/index.xml */
 /** @const */
-var cleanStack = {}
+var _cleanStack = {}
 /**
- * @typedef {{ pretty: boolean, ignoreModules: Array<string> }}
+ * @typedef {{ pretty: boolean, ignoredModules: !Array<string> }}
  */
-cleanStack.Config
+_cleanStack.Config

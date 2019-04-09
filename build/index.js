@@ -8,15 +8,14 @@ const homeDir = homedir()
 /**
  * Remove internal Node.JS lines from the error stack traces.
  * @param {string} stack The error stack to update.
- * @param {cleanStack.Config} options Options for the program.
+ * @param {!_cleanStack.Config} [options] Options for the program.
  * @param {boolean} [options.pretty=false] Replace the absolute path to the home directory with the `~`. Default `false`.
- * @param {Array<string>} [options.ignoreModules="['pirates']"] Which modules to ignore in the path. Default `['pirates']`.
+ * @param {!Array<string>} [options.ignoredModules="［'pirates'］"] Which modules to ignore in the path. Default `［'pirates'］`.
  */
-const cleanStack = (stack, options = {}) => {
+const cleanStack = (stack, options) => {
   const {
-    pretty = false,
-    ignoredModules = ['pirates'],
-  } = options
+    pretty = false, ignoredModules = ['pirates'],
+  } = options || {}
   const j = ignoredModules.join('|')
   const re = new RegExp(pathRegex.source.replace('IGNORED_MODULES', j))
 
@@ -54,11 +53,11 @@ module.exports=cleanStack
 /* documentary types/index.xml */
 /**
  * @suppress {nonStandardJsDocs}
- * @typedef {cleanStack.Config} Config Options for the program.
+ * @typedef {_cleanStack.Config} Config Options for the program.
  */
 /**
  * @suppress {nonStandardJsDocs}
- * @typedef {Object} cleanStack.Config Options for the program.
+ * @typedef {Object} _cleanStack.Config Options for the program.
  * @prop {boolean} [pretty=false] Replace the absolute path to the home directory with the `~`. Default `false`.
- * @prop {Array<string>} [ignoreModules="['pirates']"] Which modules to ignore in the path. Default `['pirates']`.
+ * @prop {!Array<string>} [ignoredModules="［'pirates'］"] Which modules to ignore in the path. Default `［'pirates'］`.
  */
