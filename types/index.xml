@@ -1,9 +1,9 @@
-<types>
+<types namespace="cleanStack">
   <type name="Config" desc="Options for the program.">
     <prop boolean name="pretty" default="false">
       Replace the absolute path to the home directory with the `~`.
     </prop>
-    <prop type="string[]" name="ignoreModules" default="['pirates']">
+    <prop type="Array<string>" name="ignoreModules" default="['pirates']">
       Which modules to ignore in the path.
     </prop>
   </type>

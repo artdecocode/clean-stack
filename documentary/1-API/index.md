@@ -15,8 +15,8 @@ import cleanStack from '@artdeco/clean-stack'
 
 %TYPEDEF types/index.xml%
 
-Remove unuseful internal Node.js lines from the error stack. Any other modules to ignore can be passed in the `ignoreModules` option.
+Remove unuseful internal _Node.JS_ lines from the error stack. Any other modules to ignore can be passed in the `ignoreModules` option.
 
-%EXAMPLE: example/example.js, ../src => @artdeco/clean-stack%
+%EXAMPLE: example, ../src => @artdeco/clean-stack%
 
-%FORK example example/example%
+%FORK example%

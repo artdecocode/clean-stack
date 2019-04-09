@@ -13,8 +13,7 @@ yarn add -E @artdeco/clean-stack
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
 - [`cleanStack(stack: string, options?: Config)`](#cleanstackstack-stringoptions-config-void)
-  * [`Config`](#config)
-- [TODO](#todo)
+  * [`Config`](#type-config)
 - [Copyright](#copyright)
 
 ## API
@@ -27,14 +26,14 @@ import cleanStack from '@artdeco/clean-stack'
 
 ## `cleanStack(`<br/>&nbsp;&nbsp;`stack: string,`<br/>&nbsp;&nbsp;`options?: Config,`<br/>`): void`
 
-__<a name="config">`Config`</a>__: Options for the program.
+__<a name="type-config">`Config`</a>__: Options for the program.
 
-|     Name      |    Type    |                          Description                          |    Default    |
-| ------------- | ---------- | ------------------------------------------------------------- | ------------- |
-| pretty        | _boolean_  | Replace the absolute path to the home directory with the `~`. | `false`       |
-| ignoreModules | _string[]_ | Which modules to ignore in the path.                          | `['pirates']` |
+|     Name      |         Type          |                          Description                          |    Default    |
+| ------------- | --------------------- | ------------------------------------------------------------- | ------------- |
+| pretty        | _boolean_             | Replace the absolute path to the home directory with the `~`. | `false`       |
+| ignoreModules | _Array&lt;string&gt;_ | Which modules to ignore in the path.                          | `['pirates']` |
 
-Remove unuseful internal Node.js lines from the error stack. Any other modules to ignore can be passed in the `ignoreModules` option.
+Remove unuseful internal _Node.JS_ lines from the error stack. Any other modules to ignore can be passed in the `ignoreModules` option.
 
 ```js
 /* yarn example/ */
@@ -62,12 +61,8 @@ Error: test
     at Object.<anonymous> (/Users/zavr/adc/clean-stack/i2.js:1:69)
 ```
 
-## TODO
-
-- [ ] Add a new item to the todo list.
-
 ## Copyright
 
-(c) [Art Deco][1] 2018
+(c) [Art Deco][1] 2019
 
-[1]: https://artdeco.bz
+[1]: https://artd.eco
