@@ -1,8 +1,8 @@
 {
   "name": "@artdeco/clean-stack",
   "version": "1.0.1",
-  "description": "A utility to remove internal Node.js lines and specific modules from error stacks.",
-  "main": "build",
+  "description": "A utility to remove internal Node.JS lines and specific modules from error stacks.",
+  "main": "build/index.js",
   "module": "src/index.js",
   "scripts": {
     "t": "zoroaster -a",
@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
     "b": "alamode src -o build -s",
-    "d": "NODE_DEBUG=doc doc src/index.js -g",
+    "d": "typal src -c",
+    "externs": "typal externs.js -e",
     "build": "yarn-s d b doc",
     "rec": "NODE_DEBUG=appshot appshot -T 23 -a Terminal -y 150 -f",
     "e": "alanode",
@@ -21,8 +22,10 @@
   },
   "files": [
     "build",
-    "src"
+    "src",
+    "externs.js"
   ],
+  "externs": "externs.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/artdecocode/clean-stack.git"

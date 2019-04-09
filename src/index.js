@@ -8,9 +8,9 @@ const homeDir = homedir()
 /**
  * Remove internal Node.js lines from the error stack traces.
  * @param {string} stack The error stack to update.
- * @param {Config} options Options for the program.
+ * @param {cleanStack.Config} options Options for the program.
  * @param {boolean} [options.pretty=false] Replace the absolute path to the home directory with the `~`. Default `false`.
- * @param {string[]} [options.ignoreModules="['pirates']"] Which modules to ignore in the path. Default `['pirates']`.
+ * @param {Array<string>} [options.ignoreModules="['pirates']"] Which modules to ignore in the path. Default `['pirates']`.
  */
 const cleanStack = (stack, options = {}) => {
   const {
@@ -38,7 +38,7 @@ const cleanStack = (stack, options = {}) => {
 
       return !re.test(match)
     })
-    .filter(x => x.trim() !== '')
+    .filter(x => x.trim())
     .map(x => {
       if (pretty) {
         return x.replace(extractPathRegex, (m, p1) => m.replace(p1, p1.replace(homeDir, '~')))
@@ -53,7 +53,12 @@ export default cleanStack
 
 /* documentary types/index.xml */
 /**
- * @typedef {Object} Config Options for the program.
+ * @suppress {nonStandardJsDocs}
+ * @typedef {cleanStack.Config} Config Options for the program.
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {Object} cleanStack.Config Options for the program.
  * @prop {boolean} [pretty=false] Replace the absolute path to the home directory with the `~`. Default `false`.
- * @prop {string[]} [ignoreModules="['pirates']"] Which modules to ignore in the path. Default `['pirates']`.
+ * @prop {Array<string>} [ignoreModules="['pirates']"] Which modules to ignore in the path. Default `['pirates']`.
  */
