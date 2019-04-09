@@ -6,7 +6,7 @@ const pathRegex = /^(?:(?:(?:node|(?:internal\/[\w/]*|.*node_modules\/(?:IGNORED
 const homeDir = homedir()
 
 /**
- * Remove internal Node.js lines from the error stack traces.
+ * Remove internal Node.JS lines from the error stack traces.
  * @param {string} stack The error stack to update.
  * @param {cleanStack.Config} options Options for the program.
  * @param {boolean} [options.pretty=false] Replace the absolute path to the home directory with the `~`. Default `false`.

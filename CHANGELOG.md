@@ -1,3 +1,9 @@
+## 9 April 2019
+
+### [1.1.0](https://github.com/artdecocode/clean-stack/compare/v1.0.1...v1.1.0)
+
+- [doc] Add types for Google Closure Compiler w/ _Depack_.
+
 ## 14 January 2019
 
 ### 1.0.1
