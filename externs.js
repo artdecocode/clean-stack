@@ -2,6 +2,6 @@
 /** @const */
 var _cleanStack = {}
 /**
- * @typedef {{ pretty: boolean, ignoredModules: !Array<string> }}
+ * @typedef {{ pretty: (boolean|undefined), ignoredModules: (!Array<string>|undefined) }}
  */
 _cleanStack.Config
